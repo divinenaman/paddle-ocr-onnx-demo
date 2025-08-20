@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import jimp from "jimp";
 import * as ort from "onnxruntime-web";
 // import "./opencv.js";

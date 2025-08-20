@@ -2,7 +2,7 @@
 // Path: react-next\utils\predict.ts
 import { getImageTensorFromPath } from "./imageHelper";
 import { runSqueezenetModel } from "./modelHelper";
-import { runPaddle } from "./paddle.ts";
+import { runPaddle } from "./paddle";
 
 export async function inferenceSqueezenet(
   path: string

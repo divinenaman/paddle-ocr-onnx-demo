@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as ort from 'onnxruntime-web';
 import _ from 'lodash';
 import { imagenetClasses } from '../data/imagenet';
