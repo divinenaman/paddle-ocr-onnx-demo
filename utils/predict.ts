@@ -22,13 +22,19 @@ export async function inferencePaddle(path: string): Promise<any> {
     cardNumber = null;
 
   for (const o of output) {
-    if (o.indexOf("/") != -1) {
-      if (!expiry || expiry < o) {
-        expiry = o;
+    const numsOnly = o.filter((x) => Number.isInteger(parseInt(x)) || x == "/");
+    const slashIdx = numsOnly.indexOf("/");
+
+    if (
+      slashIdx != -1 &&
+      slashIdx == 2 &&
+      numsOnly.length - slashIdx - 1 == 2
+    ) {
+      if (!expiry || expiry < o.join("")) {
+        expiry = o.join("");
       }
-    } else if (o.length > 10) {
-      const nums = o.filter((x) => Number.isInteger(parseInt(x)));
-      if (nums.length > 10) cardNumber = nums;
+    } else if (numsOnly.length > 10) {
+      cardNumber = numsOnly.filter((x) => x != "/").join("");
     }
   }
 
